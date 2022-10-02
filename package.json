@@ -23,18 +23,23 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "typescript": "^4.8.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "concurrently": "^7.4.0",
+    "cross-env": "^7.0.3",
+    "electron": "^21.0.0",
+    "electron-builder": "^23.3.3",
+    "wait-on": "^6.0.1"
   },
   "main": "build/electron/main.js",
   "productName": "Electron Reader",
   "homepage": ".",
   "scripts": {
-    "start": "cross-env BROWSER=none && react-app-rewired start",
+    "start": "cross-env BROWSER=none react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "postinstall": "electron-builder install-app-deps",
-    "electron:dev": "concurrently \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000 && tsc -p electron -w\" \"wait-on http://localhost:3000 && tsc -p electron && electron .\"",
+    "electron:dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && tsc -p electron -w\" \"wait-on http://localhost:3000 && tsc -p electron && electron .\"",
     "electron:build": "npm run build && tsc -p electron && electron-builder"
   },
   "eslintConfig": {
@@ -55,11 +60,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "concurrently": "^7.4.0",
-    "cross-env": "^7.0.3",
-    "electron": "^21.0.0",
-    "electron-builder": "^23.3.3",
-    "wait-on": "^6.0.1"
-  }
+  "devDependencies": {}
 }
